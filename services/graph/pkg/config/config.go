@@ -2,7 +2,6 @@ package config
 
 import (
 	"context"
-	"time"
 
 	"github.com/opencloud-eu/opencloud/pkg/shared"
 )
@@ -36,8 +35,6 @@ type Config struct {
 
 	Keycloak       Keycloak       `yaml:"keycloak"`
 	ServiceAccount ServiceAccount `yaml:"service_account"`
-
-	Mail Mail `yaml:"mail"`
 
 	Context context.Context `yaml:"-"`
 
@@ -167,19 +164,4 @@ type Metadata struct {
 	SystemUserID     string `yaml:"system_user_id" env:"OC_SYSTEM_USER_ID;GRAPH_SYSTEM_USER_ID" desc:"ID of the OpenCloud STORAGE-SYSTEM system user. Admins need to set the ID for the STORAGE-SYSTEM system user in this config option which is then used to reference the user. Any reasonable long string is possible, preferably this would be an UUIDv4 format." introductionVersion:"%%NEXT%%"`
 	SystemUserIDP    string `yaml:"system_user_idp" env:"OC_SYSTEM_USER_IDP;GRAPH_SYSTEM_USER_IDP" desc:"IDP of the OpenCloud STORAGE-SYSTEM system user." introductionVersion:"%%NEXT%%"`
 	SystemUserAPIKey string `yaml:"system_user_api_key" env:"OC_SYSTEM_USER_API_KEY" desc:"API key for the STORAGE-SYSTEM system user." introductionVersion:"%%NEXT%%"`
-}
-
-type MasterAuth struct {
-	Username string `yaml:"username" env:"OC_JMAP_MASTER_USERNAME;GROUPWARE_JMAP_MASTER_USERNAME"`
-	Password string `yaml:"password" env:"OC_JMAP_MASTER_PASSWORD;GROUPWARE_JMAP_MASTER_PASSWORD"`
-}
-
-type Mail struct {
-	Master            MasterAuth    `yaml:"master"`
-	BaseUrl           string        `yaml:"base_url" env:"GROUPWARE_BASE_URL"`
-	JmapUrl           string        `yaml:"jmap_url" env:"GROUPWARE_JMAP_URL"`
-	Timeout           time.Duration `yaml:"timeout" env:"GROUPWARE_JMAP_TIMEOUT"`
-	SessionCacheTTL   time.Duration `yaml:"session_cache_ttl" env:"GROUPWARE_SESSION_CACHE_TTL"`
-	DefaultEmailLimit int           `yaml:"default_email_limit" env:"GROUPWARE_JMAP_DEFAULT_EMAIL_LIMIT"`
-	MaxBodyValueBytes int           `yaml:"max_body_value_bytes" env:"GROUPWARE_JMAP_MAx_BODY_VALUE_BYTES"`
 }

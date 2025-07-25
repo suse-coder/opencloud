@@ -273,9 +273,8 @@ func DefaultPolicies() []config.Policy {
 					Service:  "eu.opencloud.web.auth-app",
 				},
 				{
-					Endpoint:    "/groupware",
-					Service:     "eu.opencloud.web.groupware",
-					Unprotected: true,
+					Endpoint: "/groupware",
+					Service:  "eu.opencloud.web.groupware",
 				},
 				{
 					Endpoint:    "/auth",
